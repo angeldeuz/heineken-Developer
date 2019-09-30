@@ -1,0 +1,12 @@
+table {
+  width: 100%;
+}
+tr.mat-row.ng-star-inserted:nth-child(3n+2) td {
+    color: #9a9a9a;
+}
+tr.mat-row.ng-star-inserted:nth-child(3n+3) td {
+    color: #9a9a9a;
+}
+tr.mat-header-row.ng-star-inserted {
+    background: #bcbcbc;
+}

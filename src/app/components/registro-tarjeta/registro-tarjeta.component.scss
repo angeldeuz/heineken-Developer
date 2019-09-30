@@ -1,0 +1,178 @@
+/**
+* Quitar rezice de text area
+*/
+textarea {
+  resize: none !important;
+}
+
+/**
+* Quitar underline de los campos
+*/
+.mat-form-field-appearance-legacy .mat-form-field-underline {
+	height: 0px;
+}
+.mat-form-field.mat-focused .mat-form-field-label {
+	color: #E2E2E2;
+}
+.mat-form-field.mat-focused .mat-form-field-ripple {
+	background-color: #26A63A;
+}
+
+/**
+* Color de los checkbox y tamaño
+*/
+.mat-checkbox-indeterminate.mat-accent .mat-checkbox-background, .mat-checkbox-checked.mat-accent .mat-checkbox-background {
+	background-color: #26A63A;
+}
+.mat-checkbox-checked:not(.mat-checkbox-disabled).mat-accent .mat-ripple-element, .mat-checkbox:active:not(.mat-checkbox-disabled).mat-accent .mat-ripple-element {
+	background: #26A63A;
+}
+.mat-checkbox-inner-container {
+	height: 25px !important;
+	width: 25px !important;
+}
+
+/**
+* CSS en general del componente
+*/
+.mat-form-field.mat-form-field-type-mat-input.mat-form-field-appearance-legacy.mat-form-field-has-label {
+  width: -moz-available;
+  width: -webkit-fill-available;
+  width: 90%;
+}
+#select-card-label,
+.observed-person .mat-figure mat-form-field,
+.observed-person-data .mat-figure mat-form-field,
+.position-person .mat-figure mat-form-field,
+.unity-person-data .mat-figure mat-form-field{
+	width: 90%;
+}
+
+.circle-text-label, .no-circle-text-label, .select-card-label{
+	font-weight: 550;
+	margin: 0;
+}
+
+input.mat-input-element {
+	margin-top: -0.0625em;
+	border: 1px solid #6c6969;
+}
+
+.mat-form-field-appearance-legacy .mat-form-field-infix {
+	padding: 0;
+	border-top-width: 5px;
+}
+
+/**
+* Css del contenedor de campos de la tarjeta
+*/
+.table-causes-label,
+.table-check-causes {
+  flex-basis: 90%;
+  width: 90%;
+}
+.observed-person-label {
+	width: 90%;
+}
+#select-card-label,
+.reported-person-label,
+.occurred-person-label {
+	flex-basis: 90%;
+}
+.is-notified-person-label {
+	flex-basis: 100%;
+	padding: 0 2.5%;
+}
+#observed-person-type {
+	display: flex;
+  width: 100%;
+  justify-content: space-evenly;
+}
+.mat-radio-group.ng-untouched.ng-pristine.ng-valid {
+	justify-self: center;
+	flex-basis: 100%;
+	padding: 0 0 0 2.2vw;
+}
+.mat-radio-button {
+	margin-right: 4.3em;
+	font-weight: 500;
+}
+
+/**
+* Css para input select
+*/
+mat-option.mat-option.ng-star-inserted.mat-active.mat-selected {
+  background-color: #26A63A;
+  span.mat-option-text{
+    color: #ffffff;
+  }
+}
+
+/**
+* Css para el panel de selección del combo
+*/
+.mat-select-panel .mat-optgroup-label, .mat-select-panel .mat-option {
+	font-size: inherit;
+	line-height: 3em;
+	height: 3em;
+}
+.cdk-overlay-pane{
+  min-width: auto !important;
+}
+.cdk-overlay-container .cdk-overlay-pane .testClass{
+margin-top: 5rem;
+.short-panel {
+  width: 100%
+}
+}
+.mat-select-value-text {
+	padding: 1px 15px;
+	margin-top: 0.25rem;
+	margin-left: 0.6rem;
+}
+
+mat-option.mat-option.ng-star-inserted.mat-active.mat-selected[_ngcontent-ffc-c8] {
+	background-color: #26A63A;
+	color: #fff;
+}
+
+/**
+* CSS para circulos en el formulario
+*/
+.circle-input .mat-form-field.mat-form-field-type-mat-input,
+.circle-input .mat-form-field.mat-primary.mat-form-field-type-mat-select{
+  width: 100%;
+}
+.circle-form {
+	border-radius: 50%;
+	width: auto;
+	height: auto;
+	padding: 4px 10px;
+	background: #6c6969;
+	border: 1px solid #6c6969;
+	color: #fff;
+	text-align: center;
+	font-size: large;
+	margin: 1em 10px auto auto;
+}
+.circle-input{
+  width: 100%;
+  flex: 1 0 auto;
+  display: flex;
+  margin-top: -0.5em;
+  margin-bottom: 1em;
+}
+.no-circle-input {
+	flex-basis: 100%;
+}
+
+
+/**
+* Responsive css
+*/
+@media only screen and (max-width:65em) {
+  /* CSS rules here */
+  .registry-card.mat-card {
+    width: 100%;
+  }
+}

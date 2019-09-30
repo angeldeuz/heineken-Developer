@@ -1,0 +1,345 @@
+<!-- second row -->
+<mat-card-content class="second-row-data">
+  <!-- <mat-grid-list cols="4" rowHeight="1:0.75"> -->
+  <!-- rowBreackpoint1 -->
+  <mat-grid-list [cols]="colBreakpoint1" rowHeight="{{rowBreakpoint1}}" (window:resize)="onResize($event)">
+    <mat-grid-tile class="card-date-input">
+      <mat-form-field>
+        <input type="date" matInput placeholder="Fecha" [(ngModel)]="dateSelected" required="true">
+      </mat-form-field>
+    </mat-grid-tile>
+
+    <mat-grid-tile>
+      <mat-form-field>
+        <input type="time" matInput placeholder="Hora" [(ngModel)]="timeSelected" placeholder="HH:mm:ss"
+          required="true">
+      </mat-form-field>
+    </mat-grid-tile>
+
+    <mat-grid-tile *ngIf="colBreakpoint1 == 4; else noColspan" colspan="2">
+      <mat-form-field>
+        <h4 class="no-circle-text-label">ANTIGUEDAD DE LA EMPRESA:</h4>
+        <mat-select [(ngModel)]="antiquitySelect">
+          <mat-option *ngFor="let antiquity of antiquities" [value]="antiquity.value">
+            {{antiquity.displayValue}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </mat-grid-tile>
+    <ng-template #noColspan>
+      <mat-grid-tile>
+        <mat-form-field>
+          <h4 class="no-circle-text-label">ANTIGUEDAD DE LA EMPRESA:</h4>
+          <mat-select [(ngModel)]="antiquitySelect">
+            <mat-option *ngFor="let antiquity of antiquities" [value]="antiquity.value">
+              {{antiquity.displayValue}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </mat-grid-tile>
+    </ng-template>
+  </mat-grid-list>
+</mat-card-content>
+<!-- /second row -->
+
+<!-- third row -->
+<mat-card-content class="second-row-data">
+  <mat-grid-list cols="2" rowHeight="2:0.80">
+    <mat-grid-tile class="reported-person">
+      <h4 class="select-observed-label">Seleccione la persona que reporta:</h4>
+      <mat-radio-group id="reported-person-type" class="observed-type-radio" [(ngModel)]="observerType">
+        <mat-radio-button value="Socio" [checked]="true">Socio</mat-radio-button>
+        <mat-radio-button value="Contratista">Contratista</mat-radio-button>
+      </mat-radio-group>
+    </mat-grid-tile>
+
+    <mat-grid-tile>
+      <mat-form-field *ngIf="observerType=='Socio'">
+        <h4 class="no-circle-text-label">Selección el socio que reporta:</h4>
+        <mat-select (selectionChange)="onObservertypeChange($event)" [(ngModel)]="observerEmployee">
+          <mat-option *ngFor="let employee of employeesWithNumber"
+            [value]="{'employeeNumber':employee.employeeNumber,'employeeName':employee.name}">
+            ({{employee.employeeNumber}}) {{employee.name}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field *ngIf="observerType=='Contratista'">
+        <h4 class="no-circle-text-label">Escriba el nombre del contratista:</h4>
+        <input (change)="onObservertypeChange($event)" [(ngModel)]="observerContractor" matInput>
+      </mat-form-field>
+    </mat-grid-tile>
+
+    <mat-grid-tile class="occurred-person">
+      <h4 class="select-occurred-label">Seleccione a la persona a quien le ocurrió:</h4>
+      <mat-radio-group id="reported-person-type" class="observed-type-radio" [(ngModel)]="observedType">
+        <mat-radio-button value="Socio">Socio</mat-radio-button>
+        <mat-radio-button value="Contratista">Contratista</mat-radio-button>
+      </mat-radio-group>
+    </mat-grid-tile>
+
+    <mat-grid-tile>
+      <h4 class="no-circle-text-label" *ngIf="observedType=='Socio'">Selección el socio que le ocurrio:</h4>
+      <mat-form-field *ngIf="observedType=='Socio'">
+        <mat-select (selectionChange)="onObservedtypeChange($event)" [(ngModel)]="observedEmployee">
+          <mat-option *ngFor="let employee of employeesWithNumber"
+            [value]="{'employeeNumber':employee.employeeNumber,'employeeName':employee.name}">
+            ({{employee.employeeNumber}}) {{employee.name}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <h4 class="no-circle-text-label" *ngIf="observedType=='Contratista'">Escriba el nombre del contratista:</h4>
+      <mat-form-field *ngIf="observedType=='Contratista'">
+        <input (change)="onObservedtypeChange($event)" [(ngModel)]="observedContractor" matInput>
+      </mat-form-field>
+    </mat-grid-tile>
+
+    <mat-grid-tile colspan="2" class="is-person-notified">
+      <h4 class="select-notified-label">¿Se notificó a la persona?</h4>
+      <mat-radio-group class="is-notified-person-radio" [(ngModel)]="isNotifiedPerson">
+        <mat-radio-button value="1" [checked]="true">Sí</mat-radio-button>
+        &nbsp;
+        <mat-radio-button value="0">No</mat-radio-button>
+      </mat-radio-group>
+    </mat-grid-tile>
+  </mat-grid-list>
+</mat-card-content>
+<!-- /third row -->
+
+<!-- fourth row -->
+<mat-card-content class="third-row-data">
+  <mat-grid-list cols="1" rowHeight="1:0.35">
+    <h4 class="select-management-label">Gerencia donde ocurrio el Near Miss</h4>
+    <mat-grid-tile>
+      <div class="circle-input">
+        <span class="circle-form circle-2-1">1</span>
+        <mat-form-field *ngIf="selectedCaseName == 'CASE 1'">
+          <h4 class="circle-text-label">Area</h4>
+          <mat-select (selectionChange)="onAreaSelected($event)" panelClass="short-panel" [(ngModel)]="areaSelected">
+            <mat-option *ngFor="let area of recibedAreas" [value]="{'areaId':area.id,'caseName':area.caseName}">
+              {{area.name}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field *ngIf="selectedCaseName == 'CASE 2'">
+          <h4 class="circle-text-label">Workstation</h4>
+          <mat-select (selectionChange)="onWorkstationSelected($event)" panelClass="short-panel"
+            [(ngModel)]="workstationSelected">
+            <mat-option *ngFor="let workstation of recibedWorkstations"
+              [value]="{'workstationId':workstation.id,'caseName':workstation.caseName}">
+              {{workstation.name}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+
+      <div class="circle-input">
+        <span class="circle-form circle-2-2">2</span>
+        <mat-form-field *ngIf="selectedCaseName == 'CASE 1'">
+          <h4 class="circle-text-label">Workstation</h4>
+          <mat-select (selectionChange)="onWorkstationSelected($event)" panelClass="short-panel"
+            [(ngModel)]="workstationSelected">
+            <mat-option *ngFor="let workstation of workstations"
+              [value]="{'workstationId':workstation.id,'caseName':workstation.caseName}">
+              {{workstation.name}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field *ngIf="selectedCaseName == 'CASE 2'">
+          <h4 class="circle-text-label">Area</h4>
+          <mat-select (selectionChange)="onAreaSelected($event)" panelClass="short-panel" [(ngModel)]="areaSelected">
+            <mat-option *ngFor="let area of areas" [value]="{'areaId':area.id,'caseName':area.caseName}">
+              {{area.name}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+
+      <div class="circle-input">
+        <span class="circle-form circle-2-3">3</span>
+        <mat-form-field>
+          <h4 class="circle-text-label">Máquina</h4>
+          <mat-select (selectionChange)="onMachineSelected($event)" panelClass="short-panel"
+            [(ngModel)]="machineSelected">
+            <mat-option *ngFor="let machine of machines" [value]="{'machineId':machine.id}">
+              {{machine.name}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+
+      <div class="circle-input">
+        <mat-form-field>
+          <mat-label>Describa el lugar especifico de ocurrencia</mat-label>
+          <textarea matInput placeholder="Descripción del Near Miss." [(ngModel)]="eventDescription"></textarea>
+        </mat-form-field>
+      </div>
+    </mat-grid-tile>
+  </mat-grid-list>
+</mat-card-content>
+<!-- /fourth row -->
+
+<!-- fifth row -->
+<mat-card-content class="positive-feedback-row-data">
+  <!-- Falta altura en movil -->
+  <mat-grid-list cols="1" rowHeight="1:0.30">
+    <mat-grid-tile>
+      <label class=table-causes-label>Causa del Near Miss</label>
+      <table class="table-check-causes">
+        <tr>
+          <td>
+            <mat-checkbox [(ngModel)]="chemicalSpill">Derrame de sustancias peligrosas</mat-checkbox>
+          </td>
+          <td>
+            <mat-checkbox [(ngModel)]="badQualifiedWaste">Residuos mal calificados</mat-checkbox>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <mat-checkbox [(ngModel)]="dischargingUncontrolled">Descarga no controlada o sin neutralizar</mat-checkbox>
+          </td>
+          <td>
+            <mat-checkbox [(ngModel)]="miskNowledge">Falta de conocimiento</mat-checkbox>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <mat-checkbox [(ngModel)]="leak">Fugas</mat-checkbox>
+          </td>
+          <td>
+            <mat-checkbox [(ngModel)]="distraction">Descuido</mat-checkbox>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <mat-checkbox [(ngModel)]="incompatibilityChemical">Incompatibilidad de químicos</mat-checkbox>
+          </td>
+          <td>
+            <mat-checkbox [(ngModel)]="badExecutionActivity">Mala ejecución de la actividad</mat-checkbox>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <mat-checkbox [(ngModel)]="vehiclesContaminantsPresence">Ingreso de vehiculos con presencia de contaminantes
+            </mat-checkbox>
+          </td>
+          <td>
+            <mat-checkbox [(ngModel)]="standardMiss">Falta de estándar</mat-checkbox>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <mat-checkbox [(ngModel)]="otroCheckbox">Otro</mat-checkbox>
+          </td>
+          <td>
+            <mat-form-field *ngIf="otroCheckbox">
+              <mat-label>Especificar:</mat-label>
+              <input matInput>
+            </mat-form-field>
+          </td>
+        </tr>
+      </table>
+    </mat-grid-tile>
+  </mat-grid-list>
+</mat-card-content>
+<!-- /fifth row-->
+
+<!-- sixth row -->
+<mat-card-content class="positive-feedback-row-data">
+  <mat-grid-list cols="1" rowHeight="1:0.30">
+    <mat-grid-tile>
+      <label class=table-causes-label>Impacto durante el Near Miss</label>
+      <table class="table-check-causes">
+        <tr>
+          <td>
+            <mat-checkbox [(ngModel)]="soilPollution">Contaminación de suelo</mat-checkbox>
+          </td>
+          <td>
+            <mat-checkbox [(ngModel)]="atmospherePollution">Contaminación de atmosfera</mat-checkbox>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <mat-checkbox [(ngModel)]="waterPollution">Contaminación de agua</mat-checkbox>
+          </td>
+          <td>
+            <mat-checkbox [(ngModel)]="affectationFloraFauna">Afectación a flora y/o fauna</mat-checkbox>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <mat-checkbox [(ngModel)]="otherImpactReason">Otro</mat-checkbox>
+          </td>
+          <td>
+            <mat-form-field *ngIf="otherImpactReason">
+              <mat-label>Especificar:</mat-label>
+              <input matInput [(ngModel)]="otherImpactReasonDescription">
+            </mat-form-field>
+          </td>
+        </tr>
+      </table>
+    </mat-grid-tile>
+  </mat-grid-list>
+</mat-card-content>
+<!-- /sixth row-->
+
+<!-- seventh row -->
+<mat-card-content class="positive-feedback-row-data">
+  <mat-grid-list cols="1" rowHeight="1:0.30">
+    <mat-grid-tile class="risk-types">
+      <mat-grid-tile-header>Tipos de riesgo durante el Near Miss</mat-grid-tile-header>
+      <mat-form-field>
+        <mat-label>Descripción:</mat-label>
+        <textarea [(ngModel)]="nearMissTypeSelected" matInput
+          placeholder="Anota aquí lo más destacado de la observación"></textarea>
+      </mat-form-field>
+    </mat-grid-tile>
+  </mat-grid-list>
+</mat-card-content>
+<!-- /seventh row -->
+
+<!-- eighth row -->
+<mat-card-content class="positive-feedback-row-data">
+  <mat-grid-list cols="1" rowHeight="1:0.30">
+    <mat-grid-tile class="quickly-actions">
+      <!-- Falta altura en movil-->
+      <mat-grid-tile-header>Acciones correctivas inmediatas</mat-grid-tile-header>
+      <mat-form-field>
+        <mat-label>Descripción:</mat-label>
+        <textarea [(ngModel)]="quicklyActionSelected" matInput
+          placeholder="Anota aquí lo más destacado de la observación"></textarea>
+      </mat-form-field>
+    </mat-grid-tile>
+  </mat-grid-list>
+</mat-card-content>
+<!-- /eighth row -->
+
+<!-- ninth row -->
+<mat-card-content>
+  <mat-grid-list cols="2" rowHeight="2:0.25">
+    <mat-grid-tile class="check-in-daily">
+      <mat-checkbox [(ngModel)]="dailyCommentSelected">Comentar el daily</mat-checkbox>
+    </mat-grid-tile>
+    <mat-grid-tile class="check-in-piramid">
+      <mat-checkbox [(ngModel)]="addInPyramidSelected">Registar en piramide</mat-checkbox>
+    </mat-grid-tile>
+  </mat-grid-list>
+</mat-card-content>
+<!-- /ninth row -->
+
+
+<!-- last row-->
+<mat-card-content>
+  <mat-grid-list cols="1" rowHeight="1:0.30">
+    <mat-grid-tile class="positive-feedback">
+      <div class="break-auto"></div>
+      <div class="registry-card-buttons">
+        <button mat-flat-button color="primary">CANCELAR</button>
+        <button *ngIf="observerType == 'Socio' && observedType == 'Socio'"
+          [disabled]="(dateSelected != '' && timeSelected != '' && observerSelected != '' && antiquitySelect != '' && isNotifiedPerson != '' && areaSelected != '' && workstationSelected != '' && machineSelected != '' && eventDescription != '' && observerSelected != '' && observedSelected != '' && nearMissTypeSelected != '' && quicklyActionSelected != '') ? false : true"
+          disabled="true" mat-flat-button color="accent" (click)="onClickSaveNM()">GUARDAR TARJETA</button>
+      </div>
+    </mat-grid-tile>
+  </mat-grid-list>
+</mat-card-content>
+<!-- /last row -->

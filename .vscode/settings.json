@@ -1,0 +1,4 @@
+{
+    "appService.defaultWebAppToDeploy": "/subscriptions/32d9614a-386f-4fe4-bccc-1c2d2a383f98/resourceGroups/industryconect/providers/Microsoft.Web/sites/frontIC",
+    "appService.deploySubpath": "dist\\Tagging"
+}

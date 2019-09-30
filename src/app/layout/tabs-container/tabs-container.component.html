@@ -1,0 +1,42 @@
+<div class="breadcums-container">
+  <span class="breadcums-text-1">Sistema de tarjeteo <span class="breadcums-text-2">/ T. Verde / Registro</span></span>
+</div>
+<mat-tab-group mat-align-tabs="end" dynamicHeight>
+  <mat-tab>
+    <ng-template mat-tab-label>
+      <mat-icon svgIcon="filtro_tab" class="filtrado-tab-icon"></mat-icon>
+      Filtrado
+    </ng-template>
+    <app-filtro-tarjeta></app-filtro-tarjeta>
+  </mat-tab>
+
+  <mat-tab>
+    <ng-template mat-tab-label>
+      <mat-icon svgIcon="registro_tab" class="registro-tab-icon"></mat-icon>
+      Registro
+    </ng-template>
+    <ng-template matTabContent>
+      <app-registro-tarjeta></app-registro-tarjeta>
+    </ng-template>
+  </mat-tab>
+
+  <mat-tab>
+    <ng-template mat-tab-label>
+      <mat-icon svgIcon="exportacion_tab" class="exportacion-tab-icon"></mat-icon>
+      Exportación
+    </ng-template>
+    <ng-template matTabContent>
+      <app-exportacion-tarjeta></app-exportacion-tarjeta>
+    </ng-template>
+  </mat-tab>
+
+  <mat-tab>
+    <ng-template mat-tab-label>
+      <mat-icon svgIcon="reporteo_tab" class="reporteo-tab-icon"></mat-icon>
+      Reporteo
+    </ng-template>
+    <ng-template matTabContent>
+      <app-reporteo-tarjeta></app-reporteo-tarjeta>
+    </ng-template>
+  </mat-tab>
+</mat-tab-group>

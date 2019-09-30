@@ -1,0 +1,164 @@
+<table mat-table [dataSource]="dataSourcePositivos" class="mat-elevation-z8">
+
+  <!--- Note that these columns can be defined in any order.
+        The actual rendered columns are set as a property on the row definition" -->
+
+  <!-- Position Column -->
+  <ng-container matColumnDef="departamento">
+    <th mat-header-cell *matHeaderCellDef> Positivo. </th>
+    <td mat-cell *matCellDef="let element"> {{element.departamento}} </td>
+  </ng-container>
+
+  <!-- Name Column -->
+  <ng-container matColumnDef="enero">
+    <th mat-header-cell *matHeaderCellDef> Ene </th>
+    <td mat-cell *matCellDef="let element"> {{element.enero}} </td>
+  </ng-container>
+
+  <!-- Weight Column -->
+  <ng-container matColumnDef="febrero">
+    <th mat-header-cell *matHeaderCellDef> Feb </th>
+    <td mat-cell *matCellDef="let element"> {{element.febrero}} </td>
+  </ng-container>
+
+  <!-- Symbol Column -->
+  <ng-container matColumnDef="marzo">
+    <th mat-header-cell *matHeaderCellDef> Mar </th>
+    <td mat-cell *matCellDef="let element"> {{element.marzo}} </td>
+  </ng-container>
+  <!-- Name Column -->
+  <ng-container matColumnDef="abril">
+    <th mat-header-cell *matHeaderCellDef> Abr </th>
+    <td mat-cell *matCellDef="let element"> {{element.abril}} </td>
+  </ng-container>
+  <!-- Name Column -->
+  <ng-container matColumnDef="mayo">
+    <th mat-header-cell *matHeaderCellDef> May </th>
+    <td mat-cell *matCellDef="let element"> {{element.mayo}} </td>
+  </ng-container>
+  <!-- Name Column -->
+  <ng-container matColumnDef="junio">
+    <th mat-header-cell *matHeaderCellDef> Jun </th>
+    <td mat-cell *matCellDef="let element"> {{element.junio}} </td>
+  </ng-container>
+  <!-- Name Column -->
+  <ng-container matColumnDef="julio">
+    <th mat-header-cell *matHeaderCellDef> Jul </th>
+    <td mat-cell *matCellDef="let element"> {{element.julio}} </td>
+  </ng-container>
+  <!-- Name Column -->
+  <ng-container matColumnDef="agosto">
+    <th mat-header-cell *matHeaderCellDef> Ago </th>
+    <td mat-cell *matCellDef="let element"> {{element.agosto}} </td>
+  </ng-container>
+  <!-- Name Column -->
+  <ng-container matColumnDef="septiembre">
+    <th mat-header-cell *matHeaderCellDef> Sep </th>
+    <td mat-cell *matCellDef="let element"> {{element.septiembre}} </td>
+  </ng-container>
+  <!-- Name Column -->
+  <ng-container matColumnDef="octubre">
+    <th mat-header-cell *matHeaderCellDef> Oct </th>
+    <td mat-cell *matCellDef="let element"> {{element.octubre}} </td>
+  </ng-container>
+  <!-- Name Column -->
+  <ng-container matColumnDef="noviembre">
+    <th mat-header-cell *matHeaderCellDef> Nov </th>
+    <td mat-cell *matCellDef="let element"> {{element.noviembre}} </td>
+  </ng-container>
+  <!-- Name Column -->
+  <ng-container matColumnDef="diciembre">
+    <th mat-header-cell *matHeaderCellDef> Dic </th>
+    <td mat-cell *matCellDef="let element"> {{element.diciembre}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="total">
+    <th mat-header-cell *matHeaderCellDef> Total </th>
+    <td mat-cell *matCellDef="let element"> {{element.total}} </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+<table mat-table [dataSource]="dataSourceNegativos" class="mat-elevation-z8">
+
+  <!--- Note that these columns can be defined in any order.
+        The actual rendered columns are set as a property on the row definition" -->
+
+  <!-- Position Column -->
+  <ng-container matColumnDef="departamento">
+    <th mat-header-cell *matHeaderCellDef> Negativo. </th>
+    <td mat-cell *matCellDef="let element"> {{element.departamento}} </td>
+  </ng-container>
+
+  <!-- Name Column -->
+  <ng-container matColumnDef="enero">
+    <th mat-header-cell *matHeaderCellDef> Ene </th>
+    <td mat-cell *matCellDef="let element"> {{element.enero}} </td>
+  </ng-container>
+
+  <!-- Weight Column -->
+  <ng-container matColumnDef="febrero">
+    <th mat-header-cell *matHeaderCellDef> Feb </th>
+    <td mat-cell *matCellDef="let element"> {{element.febrero}} </td>
+  </ng-container>
+
+  <!-- Symbol Column -->
+  <ng-container matColumnDef="marzo">
+    <th mat-header-cell *matHeaderCellDef> Mar </th>
+    <td mat-cell *matCellDef="let element"> {{element.marzo}} </td>
+  </ng-container>
+  <!-- Name Column -->
+  <ng-container matColumnDef="abril">
+    <th mat-header-cell *matHeaderCellDef> Abr </th>
+    <td mat-cell *matCellDef="let element"> {{element.abril}} </td>
+  </ng-container>
+  <!-- Name Column -->
+  <ng-container matColumnDef="mayo">
+    <th mat-header-cell *matHeaderCellDef> May </th>
+    <td mat-cell *matCellDef="let element"> {{element.mayo}} </td>
+  </ng-container>
+  <!-- Name Column -->
+  <ng-container matColumnDef="junio">
+    <th mat-header-cell *matHeaderCellDef> Jun </th>
+    <td mat-cell *matCellDef="let element"> {{element.junio}} </td>
+  </ng-container>
+  <!-- Name Column -->
+  <ng-container matColumnDef="julio">
+    <th mat-header-cell *matHeaderCellDef> Jul </th>
+    <td mat-cell *matCellDef="let element"> {{element.julio}} </td>
+  </ng-container>
+  <!-- Name Column -->
+  <ng-container matColumnDef="agosto">
+    <th mat-header-cell *matHeaderCellDef> Ago </th>
+    <td mat-cell *matCellDef="let element"> {{element.agosto}} </td>
+  </ng-container>
+  <!-- Name Column -->
+  <ng-container matColumnDef="septiembre">
+    <th mat-header-cell *matHeaderCellDef> Sep </th>
+    <td mat-cell *matCellDef="let element"> {{element.septiembre}} </td>
+  </ng-container>
+  <!-- Name Column -->
+  <ng-container matColumnDef="octubre">
+    <th mat-header-cell *matHeaderCellDef> Oct </th>
+    <td mat-cell *matCellDef="let element"> {{element.octubre}} </td>
+  </ng-container>
+  <!-- Name Column -->
+  <ng-container matColumnDef="noviembre">
+    <th mat-header-cell *matHeaderCellDef> Nov </th>
+    <td mat-cell *matCellDef="let element"> {{element.noviembre}} </td>
+  </ng-container>
+  <!-- Name Column -->
+  <ng-container matColumnDef="diciembre">
+    <th mat-header-cell *matHeaderCellDef> Dic </th>
+    <td mat-cell *matCellDef="let element"> {{element.diciembre}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="total">
+    <th mat-header-cell *matHeaderCellDef> Total </th>
+    <td mat-cell *matCellDef="let element"> {{element.total}} </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>

@@ -1,0 +1,78 @@
+/**
+* Css flexbox para tabla de radio-button en la parte de revisar comportamientos
+*/
+.opotions-behavior-list-radio.mat-radio-group > * {
+  display: flex;
+}
+.table-radio .mat-figure {
+  justify-content: space-evenly;
+  padding-block-start: 1rem;
+}
+.table-radio tr {
+  height: 4.2rem;
+  border-bottom: 2px solid black;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.table-radio {
+  display: inline-flex;
+  flex-direction: column;
+  width: 100%;
+  font-size: large;
+}
+.table-header {
+	background-color: #F4F4F4;
+	border-radius: 3px;
+  color: #827F7F;
+  padding-right: 1.1em;
+  th {
+    font-weight: 500;
+  }
+}
+.table-radio > tr > td:nth-child(1), .table-radio > tr.table-header > th:nth-child(1) {
+	flex-basis: 55%;
+	max-width: 55%;
+}
+.positive-feedback-header{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 47px;
+    background: #E2E2E2 !important;
+    margin-bottom: 35px;
+}
+.positive-feedback{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/***
+* Mobile media query
+*/
+@media only screen and (max-width:59em) {
+	/* CSS rules here */
+	.mat-grid-tile .mat-figure {
+    height: 65%;
+  }
+  .table-radio > tr > td:nth-child(1), .table-radio > tr.table-header > th:nth-child(1) {
+    flex-basis: 75%;
+    max-width: 75%;
+  }
+  .table-radio label {
+    text-overflow: ellipsis;
+    overflow: hidden;
+  }
+  .table-causes-label, .table-check-causes {
+    flex-basis: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    font-size: smaller;
+    align-content: center;
+    align-items: center;
+    justify-content: center;
+    justify-items: center;
+  }
+}

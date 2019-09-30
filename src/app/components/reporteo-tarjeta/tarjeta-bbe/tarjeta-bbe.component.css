@@ -1,0 +1,95 @@
+.mat-card-header {
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-flex-wrap: nowrap;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-content: center;
+  -ms-flex-line-pack: center;
+  align-content: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+  font-size: xx-large;
+  color: #ffffff;
+  background-color: #33bf2e;
+}
+.mat-card-header .mat-card-header-text .card-title.mat-card-title {
+  font-size: xx-large;
+}
+.mat-figure {
+  flex-direction: column;
+}
+.positive-feedback > .mat-figure {
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+.table-radio .mat-radio-group {
+  -webkit-box-pack: start;
+  justify-content: space-between;
+  justify-self: stretch;
+  align-self: stretch;
+  display: flex;
+}
+.select-card-tile.mat-grid-tile .mat-figure {
+  left: 10%;
+  top: 10%;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-flex-wrap: nowrap;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  -webkit-justify-content: flex-start;
+  -ms-flex-pack: start;
+  justify-content: flex-start;
+  -webkit-align-content: stretch;
+  -ms-flex-line-pack: stretch;
+  align-content: stretch;
+  -webkit-align-items: flex-start;
+  -ms-flex-align: start;
+  align-items: flex-start;
+}
+.select-person-tile.mat-grid-tile > figure.mat-figure {
+  left: 10%;
+  top: 0;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-flex-wrap: nowrap;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  -webkit-justify-content: flex-start;
+  -ms-flex-pack: start;
+  justify-content: flex-start;
+  -webkit-align-content: stretch;
+  -ms-flex-line-pack: stretch;
+  align-content: stretch;
+  -webkit-align-items: flex-start;
+  -ms-flex-align: start;
+  align-items: flex-start;
+}
+.input-report-person-tile .mat-figure {
+  flex-direction: column;
+}
+.mat-form-field.mat-form-field-type-mat-input,
+.mat-form-field.mat-primary.mat-form-field-type-mat-select {
+  width: 80%;
+}
+.example-month-picker .mat-calendar-period-button {
+  pointer-events: none;
+}
+
+.example-month-picker .mat-calendar-arrow {
+  display: none;
+}

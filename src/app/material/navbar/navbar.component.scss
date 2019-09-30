@@ -1,0 +1,121 @@
+/* You can add global styles to this file, and also import other style files */
+
+/* Own SCSS for app */
+.mat-toolbar {
+  background-color: #fff;
+  min-height: 55px;
+}
+.bars-green {
+  color: #008000;
+  transform: scale(1.10, 0.75);
+  font-size: smaller;
+  height: inherit;
+  padding-top: 20px;
+  padding-left: 5px;
+}
+.container-gray {
+  background-color: #f4f4f4;
+}
+.log-out-btn {
+  font-size: 12.5pt;
+  color: #707070;
+  padding: unset;
+  fa{
+      font-size: 20pt;
+  }
+}
+.heineken-mexico-logo {
+  max-width: 9.1rem;
+  max-height: 4.1rem;
+  object-position: 1px -3px;
+  margin: 1px;
+}
+.mat-toolbar-row,
+.mat-toolbar-single-row {
+  font-size: xx-large;
+  -webkit-box-shadow: 0 0 0.75rem 0 rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 0 0 0.75rem 0 rgba(0, 0, 0, 0.75);
+  box-shadow: 0 0 0.75rem 0 #000;
+  height: 55px;
+  padding: 0px 35px;
+}
+
+/**header.scss*/
+.container {
+  display: flex;
+  align-items: center;
+}
+
+.header-items {
+  margin-right: auto;
+  display: flex;
+  align-items: center;
+}
+
+.title {
+  display: inline-block;
+  padding: 7px 25px 7px 0;
+  font-family: Roboto;
+  font-size: 1.55rem;
+  font-weight: 500;
+  vertical-align: middle;
+  margin: 0;
+  color: #3f4047;
+}
+
+.breadcrumbs {
+  display: inline-flex;
+  width: auto;
+  height: 100%;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  align-items: center;
+  border-left: 1px solid #e2e5ec;
+  padding-left: 15px !important;
+}
+
+.nav-item {
+  padding: 0;
+  min-height: 35px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  vertical-align: middle;
+  position: relative;
+  margin-right: 20px;
+  a {
+    width: 100%;
+    height: 100%;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    text-align: left;
+    i {
+      font-size: 1.3rem;
+      color: #f4f4f4;
+      height: 100%;
+      vertical-align: middle;
+      width: 35px;
+      text-align: center;
+    }
+    span {
+      color: #f4f4f4;
+      font-weight: 400;
+      display: table-cell;
+      height: 100%;
+      width: 100%;
+      margin: 0;
+      padding: 0;
+      vertical-align: middle;
+      font-size: 1rem;
+    }
+  }
+  &:not(:last-child)::after {
+    content: '-';
+    position: absolute;
+    right: -10px;
+    top: 6px;
+    color: #f4f4f4;
+  }
+}

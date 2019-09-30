@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="473px" height="525px" viewBox="0 0 473 525" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 50.2 (55047) - http://www.bohemiancoding.com/sketch -->
+    <title>Artboard 1</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <polygon id="path-1" points="0 0.848 472.6809 0.848 472.6809 526 0 526"></polygon>
+    </defs>
+    <g id="Artboard-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <polygon id="Fill-1" fill="#FFFFFF" points="45.764 488 450.764 488 450.764 166 45.764 166"></polygon>
+        <g id="Group-4" transform="translate(0.000000, -0.848000)">
+            <mask id="mask-2" fill="white">
+                <use xlink:href="#path-1"></use>
+            </mask>
+            <g id="Clip-3"></g>
+            <path d="M420.0999,473.5287 L52.5809,473.5287 L52.5809,184.6077 L420.1219,184.6077 L420.1219,473.5287 L420.0999,473.5287 Z M420.0999,53.3197 L393.8639,53.3197 L393.8639,0.8477 L341.3929,0.8477 L341.3929,53.3197 L131.2879,53.3197 L131.2879,0.8477 L78.8169,0.8477 L78.8169,53.3197 L52.5809,53.3197 C23.4349,53.3197 0.3059,77.0377 0.3059,105.8777 L-0.0001,473.5287 C-0.0001,502.3697 23.4349,526.0007 52.5809,526.0007 L420.1219,526.0007 C449.0489,526.0007 472.6809,502.3677 472.6809,473.5287 L472.6809,105.8997 C472.6809,77.0387 449.0489,53.3197 420.0999,53.3197 Z M355.2869,265.0007 L327.4979,237.1887 L199.3389,365.3257 L143.6509,309.6157 L115.8399,337.4267 L199.3389,420.9257 L355.2869,265.0007 Z" id="Fill-2" fill="#319360" mask="url(#mask-2)"></path>
+        </g>
+    </g>
+</svg>

@@ -1,0 +1,238 @@
+// Custom Theming for Angular Material
+// For more information: https://material.angular.io/guide/theming
+@import '~@angular/material/theming';
+// Plus imports for other components in your app.
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat-core();
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue. Available color palettes: https://material.io/design/color/
+$Tagging-primary: mat-palette($mat-green);
+$Tagging-accent: mat-palette($mat-pink, A200, A100, A400);
+
+// The warn palette is optional (defaults to red).
+$Tagging-warn: mat-palette($mat-red);
+
+// Create the theme object (a Sass map containing all of the palettes).
+$Tagging-theme: mat-light-theme($Tagging-primary, $Tagging-accent, $Tagging-warn);
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include angular-material-theme($Tagging-theme);
+
+
+html, body { color:rgb(0, 93, 31); height: 100%; font-family: "Roboto"; }
+body { margin: 0; font-family: "Roboto", "Helvetica Neue", sans-serif; }
+.container-gray { background-color: #f4f4f4; }
+.break {flex-basis: 100%;height: 0;}
+.break-auto {flex-basis: auto;height: 0;}
+
+/**
+* Breadcums
+*/
+.breadcums-container {
+	margin: 3.5em auto auto;
+}
+
+/* site css */
+/* Site global CSS */
+.was-validated .form-control:valid ~ .invalid-feedback {
+  display: none;
+}
+
+input.invalid ~ .select-dropdown {
+  border-bottom: 1px solid #F44336;
+}
+
+.custom-tabs .tab a {
+  color: #13a527e6 !important;
+}
+
+.customSelect {
+  border-bottom: 2px solid #4caf50 !important;
+}
+
+.customInvalidSelect {
+  border-bottom: 2px solid #F44336 !important;
+}
+/* MAD-RIPPLE EFFECT */
+.ripple {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  overflow: hidden;
+  -webkit-transform: translateZ(0); /* to contain zoomed ripple */
+  transform: translateZ(0);
+  border-radius: inherit; /* inherit from parent (rounded buttons etc) */
+  pointer-events: none; /* allow user interaction */
+  animation: ripple-shadow 0.4s forwards;
+  -webkit-animation: ripple-shadow 0.4s forwards;
+}
+
+.rippleWave {
+  backface-visibility: hidden;
+  position: absolute;
+  border-radius: 50%;
+  transform: scale(0.7);
+  -webkit-transform: scale(0.7);
+  background: rgba(255,255,255, 1);
+  opacity: 0.45;
+  animation: ripple 2s forwards;
+  -webkit-animation: ripple 2s forwards;
+}
+
+@keyframes ripple-shadow {
+  0% {
+      box-shadow: 0 0 0 rgba(0,0,0,0.0);
+  }
+
+  20% {
+      box-shadow: 0 4px 16px rgba(0,0,0,0.3);
+  }
+
+  100% {
+      box-shadow: 0 0 0 rgba(0,0,0,0.0);
+  }
+}
+
+@-webkit-keyframes ripple-shadow {
+  0% {
+      box-shadow: 0 0 0 rgba(0,0,0,0.0);
+  }
+
+  20% {
+      box-shadow: 0 4px 16px rgba(0,0,0,0.3);
+  }
+
+  100% {
+      box-shadow: 0 0 0 rgba(0,0,0,0.0);
+  }
+}
+
+@keyframes ripple {
+  to {
+      transform: scale(24);
+      opacity: 0;
+  }
+}
+
+@-webkit-keyframes ripple {
+  to {
+      -webkit-transform: scale(24);
+      opacity: 0;
+  }
+}
+
+//
+// Name:           Material Shadows
+// Description:    Mixins for Material Design Shadows.
+// Version:        3.0.1
+//
+// Author:         Denis Malinochkin
+// Git:            https://github.com/mrmlnc/material-shadows
+//
+// twitter:        @mrmlnc
+//
+// ------------------------------------
+
+// Mixins
+// ------------------------------------
+
+@mixin z-depth-transition() {
+  transition: box-shadow .28s cubic-bezier(.4, 0, .2, 1);
+}
+
+@mixin z-depth-focus() {
+  box-shadow: 0 0 8px rgba(0, 0, 0, .18), 0 8px 16px rgba(0, 0, 0, .36);
+}
+
+@mixin z-depth-2dp() {
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, .14),
+  0 1px 5px 0 rgba(0, 0, 0, .12),
+  0 3px 1px -2px rgba(0, 0, 0, .2);
+}
+
+@mixin z-depth-3dp() {
+  box-shadow: 0 3px 4px 0 rgba(0, 0, 0, .14),
+  0 1px 8px 0 rgba(0, 0, 0, .12),
+  0 3px 3px -2px rgba(0, 0, 0, .4);
+}
+
+@mixin z-depth-4dp() {
+  box-shadow: 0 4px 5px 0 rgba(0, 0, 0, .14),
+  0 1px 10px 0 rgba(0, 0, 0, .12),
+  0 2px 4px -1px rgba(0, 0, 0, .4);
+}
+
+@mixin z-depth-6dp() {
+  box-shadow: 0 6px 10px 0 rgba(0, 0, 0, .14),
+  0 1px 18px 0 rgba(0, 0, 0, .12),
+  0 3px 5px -1px rgba(0, 0, 0, .4);
+}
+
+@mixin z-depth-8dp() {
+  box-shadow: 0 8px 10px 1px rgba(0, 0, 0, .14),
+  0 3px 14px 2px rgba(0, 0, 0, .12),
+  0 5px 5px -3px rgba(0, 0, 0, .4);
+}
+
+@mixin z-depth-16dp() {
+  box-shadow: 0 16px 24px 2px rgba(0, 0, 0, .14),
+  0 6px 30px 5px rgba(0, 0, 0, .12),
+  0 8px 10px -5px rgba(0, 0, 0, .4);
+}
+
+@mixin z-depth-24dp() {
+  box-shadow: 0 9px 46px 8px rgba(0, 0, 0, .14),
+  0 24px 38px 3px rgba(0, 0, 0, .12),
+  0 11px 15px -7px rgba(0, 0, 0, .4);
+}
+
+@mixin z-depth($dp: 2) {
+  @if $dp == 2 {
+    @include z-depth-2dp();
+  } @else if $dp == 3 {
+    @include z-depth-3dp();
+  } @else if $dp == 4 {
+    @include z-depth-4dp();
+  } @else if $dp == 6 {
+    @include z-depth-6dp();
+  } @else if $dp == 8 {
+    @include z-depth-8dp();
+  } @else if $dp == 16 {
+    @include z-depth-16dp();
+  } @else if $dp == 24 {
+    @include z-depth-24dp();
+  }
+}
+
+// Class generator
+// ------------------------------------
+
+@mixin z-depth-classes($transition: false, $focus: false) {
+  @if $transition == true {
+    &-transition {
+      @include z-depth-transition();
+    }
+  }
+
+  @if $focus == true {
+    &-focus {
+      @include z-depth-focus();
+    }
+  }
+
+  // The available values for the shadow depth
+  @each $depth in 2, 3, 4, 6, 8, 16, 24 {
+    &-#{$depth}dp {
+      @include z-depth($depth);
+    }
+  }
+}

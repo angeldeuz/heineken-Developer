@@ -1,0 +1,35 @@
+<mat-card class="reporter-card">
+
+  <div class="container-helper">
+    <mat-card style="background-color: #d2f3f4; line-height: 1rem; padding: 1rem !important;">
+      Para ver un reporte, selecciona el tipo de Tarjeta Verde, llene los filtros y haga clic en "Generar reporte", Si no
+      necesita filtrar, seleccione únicamente el año que quieres ver y haz clic en "Generar reporte".
+    </mat-card>
+  </div>
+
+  <!-- first row -->
+  <mat-card-content class="first-row-data">
+    <mat-grid-list cols="3" rowHeight="1:0.15">
+      <mat-grid-tile class="place-general-field">
+        <h4 id="select-card-label" class="select-card-label">Seleccione el tipo de Tarjeta Verde:</h4>
+        
+        <mat-radio-group class="card-type-radio" aria-label="select-card-label" (name)="cardTypeSelected" (change)=onCardTypeSelected($event)>
+          <mat-radio-button value="1">BBE</mat-radio-button>
+          <mat-radio-button value="2">Near Miss</mat-radio-button>
+        </mat-radio-group>
+      </mat-grid-tile>
+    </mat-grid-list>
+  </mat-card-content>
+  <!-- first row -->
+
+
+  <app-tarjeta-reporteo-bbe   class="inner-tab-reporteo" *ngIf="cardTypeSelected == '1'">
+  </app-tarjeta-reporteo-bbe>
+
+  <app-tarjeta-reporteo-near-miss   class="inner-tab-reporteo" *ngIf="cardTypeSelected == '2'">
+  </app-tarjeta-reporteo-near-miss>
+
+
+</mat-card>
+
+

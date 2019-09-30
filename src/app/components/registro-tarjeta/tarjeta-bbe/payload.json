@@ -1,0 +1,37 @@
+{
+    "SelectedDatetime" : "2019-08-15 09:06:00.000",
+    "ObserverEmployeeId" : "1", // Empleado que reporta
+    "BbeObservedType" : "Memo", // Socio || Contratista
+    "ObservedEmployeeId" : "1", // EmployeerId, NOTA: si es que seleccionaron Socio, de lo contrario poner 0
+    "ObservedEmployeeRoleId" : "1", // RoleId, NOTA: si es que seleccionaron Socio, de lo contrario poner 0
+    "ObservedAreaId" : "1", // AreaId, NOTA: si es que seleccionaron Socio, de lo contrario poner 0
+    "ObservedContractorName" : "N/A", // Nombre del contratista, NOTA: si es que seleccionaron Contratista de lo contrario poner N/A
+    "ObservedContractorRole" : "N/A", // Rol o Descripcion de posición del contratista, NOTA: si es que seleccionaron Contratista de lo contrario poner N/A
+    "EventPlaceDescription" : "N/A", // Area breve unidad organizativa o Area, NOTA: si es que seleccionaron Contratista de lo contrario poner N/A
+    "RiskPreventionDescription" : "N/A", // Retroalimentacion Crrectiva - ¿Cómo previenes este riesgo(s)? (Al haber seleccionado algo negativo enlos comportamientos)
+    "RiskCompromiseDescription" : "N/A", // Retroalimentacion Crrectiva - ¿Qué compromiso especifico genera? (Al haber seleccionado algo negativo en los comportamientos)
+    "ReasonDoneQuick" : "1", // Retroalimentacion Crrectiva - Descuido [1 || 0] 1:Check 0:Uncheck (Al haber seleccionado algo negativo en los comportamientos)
+    "ReasonSecurityDisinterest" : "1", // Retroalimentacion Crrectiva - Falta de material [1 || 0] 1:Check 0:Uncheck (Al haber seleccionado algo negativo en los comportamientos)
+    "ReasonLackingTraining" : "1", // Retroalimentacion Crrectiva - Falta de conocimiento [1 || 0] 1:Check 0:Uncheck (Al haber seleccionado algo negativo en los comportamientos)
+    "ReasonDistraction" : "1", // Retroalimentacion Crrectiva - Desinterés [1 || 0] 1:Check 0:Uncheck (Al haber seleccionado algo negativo en los comportamientos)
+    "ReasonLackingRiskAnalysis" : "1", // Retroalimentacion Crrectiva - Falta de capacitación [1 || 0] 1:Check 0:Uncheck (Al haber seleccionado algo negativo en los comportamientos)
+    "ReasonFatigue" : "1", // Retroalimentacion Crrectiva - Queria terminar rápido [1 || 0] 1:Check 0:Uncheck (Al haber seleccionado algo negativo en los comportamientos)
+    "ReasonUnclear" : "1", // Retroalimentacion Crrectiva - Reglas poco claras [1 || 0] 1:Check 0:Uncheck (Al haber seleccionado algo negativo en los comportamientos)
+    "ReasonOther" : "0", // Retroalimentacion Crrectiva - Otro [1 || 0] 1:Check 0:Uncheck (Al haber seleccionado algo negativo en los comportamientos)
+    "ReasonOtherDescription" : "N/A", // Retroalimentacion Crrectiva - Otro [Texto] (Al haber seleccionado algo negativo en los comportamientos)
+    "PositiveFeedback" : "Excelente",  // Retroalimentacion Positiva
+    "ClosedDatetime" : "2019-08-15 09:06:00.000",
+    "MaintenanceTypeId" : "1", // Lugar
+    "DepartmentId" : "1", // Departamento
+    "AreaId" : "1", // Area
+    "WorkstationId" : "1", // Workstation
+    "MachineId" : "1", // Maquina
+    "SystemId" : "1", // Systema
+    "RequestWasteAdvice":"1", // Solicitar asesorías para disposición de residuos:
+    "WorkAreaWithoutWaste":"1", // Área de trabajo sin acumulación de residuos:
+    "CorrectIdentificationContainers":"1", // Correcta identificación de contenedores para residuos:
+    "AdequateSegmentationWaste":"1", // Segmentación adecuada de residuos en el área de trabajo:
+    "CorrectIdentificationStorageProducts":"1", // Correcta identificación y almacenamiento de productos químicos:
+    "ControlledDownloadNotice":"1", // Descarga controlada y/o con previo aviso a drenaje (químicos neutralizados, compuestos cancerigenos, levaura:
+    "ResponsibleEnergyConsumption":"1", //Consumo responsable de energeticos (Agua, Electricidad, Térmico):
+}

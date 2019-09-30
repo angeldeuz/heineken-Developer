@@ -1,0 +1,60 @@
+<mat-card class="registry-card">
+
+    <mat-card-header>
+      <mat-card-title class="card-title">Registro de tarjeta BBE</mat-card-title>
+    </mat-card-header>
+
+    <!-- first row -->
+    <mat-card-content class="first-row-data">
+    <!-- <mat-grid-list cols="2" rowHeight="1:0.36"> -->
+    <mat-grid-list [cols]="colBreakpoint" rowHeight="{{rowBreakpoint}}" (window:resize)="onResize($event)">
+    <mat-grid-tile class="place-general-field">
+      <div class="circle-input">
+          <span class="circle-form circle-1-1">1</span>
+          <mat-form-field>
+            <h4 class="circle-text-label">Lugar</h4>
+            <mat-select (selectionChange)="onPlaceSelected($event)" [(ngModel)]="placeSelected" panelClass="short-panel">
+              <mat-option *ngFor="let maintenanceType of maintenanceTypes" [value]="maintenanceType.id">
+                {{maintenanceType.name}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+      </div>
+
+      <div class="circle-input">
+        <span class="circle-form circle-1-2">2</span>
+            <mat-form-field>
+            <h4 class="circle-text-label">Departamento</h4>
+            <mat-select (selectionChange)="onDepartmentSelected($event)" [(ngModel)]="departmentSelected" panelClass="short-panel">
+              <mat-option *ngFor="let department of departments" [value]="{'departmentId':department.id,'caseName':department.caseName}">
+                {{department.name}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+      </div>
+
+
+    </mat-grid-tile>
+
+    <mat-grid-tile class="select-card-field">
+      <h4 id="select-card-label" class="select-card-label">Seleccione el tipo de Tarjeta Verde:</h4>
+      <mat-radio-group class="card-type-radio" aria-label="select-card-label" (name)="cardTypeSelected" (change)=onCardTypeSelected($event)>
+        <mat-radio-button value="1" [checked]="true">BBE</mat-radio-button>
+        <mat-radio-button value="2">Near Miss</mat-radio-button>
+      </mat-radio-group>
+    </mat-grid-tile>
+
+    </mat-grid-list>
+    </mat-card-content>
+    <!-- first row -->
+
+    <!-- Divider -->
+    <div class="form-block-divider"></div>
+
+    <app-tarjeta-bbe [selectedCaseName]="selectedCaseName" [recibedAreas]="areas" [recibedWorkstations]="workstations" [cardTypeSelected]="cardTypeSelected" [placeSelected]="placeSelected" [departmentSelected]="departmentSelected" class="inner-tab-registro" *ngIf="cardTypeSelected == '1' && placeSelected != null && departmentSelected != null"></app-tarjeta-bbe>
+
+    <app-tarjeta-near-miss [selectedCaseName]="selectedCaseName" [recibedAreas]="areas" [recibedWorkstations]="workstations" [cardTypeSelected]="cardTypeSelected" [placeSelected]="placeSelected" [departmentSelected]="departmentSelected" class="inner-tab-registro" *ngIf="cardTypeSelected == '2' && placeSelected != null && departmentSelected != null"></app-tarjeta-near-miss>
+
+</mat-card>
+
+

@@ -1,0 +1,129 @@
+<!-- first row -->
+<mat-card-content class="first-row-data">
+  <mat-grid-list cols="1" rowHeight="1:0.10">
+    <mat-grid-tile [rowspan]="3">
+      <div class="no-circle-input">
+        <mat-form-field>
+          <h4 class="no-circle-text-label">Año</h4>
+          <input matInput [matDatepicker]="picker" type="number" [(ngModel)]="yearSelected" (ngModelChange)="filtroAnio($event)" disabled>
+          <mat-datepicker-toggle matSuffix [for]="picker" ></mat-datepicker-toggle>
+          <mat-datepicker #picker startView="multi-year" (yearSelected)="filtroAnio($event);onYearSelected($event);picker.close();" touchUi disabled="false"></mat-datepicker>
+        </mat-form-field>
+      </div>
+      <div class="circle-input">
+        <span class="circle-1 circle-form">1</span>
+        <mat-form-field>
+          <h4 class="circle-text-label">Lugar</h4>
+          <mat-select (selectionChange)="onPlaceSelected($event)" [(ngModel)]="placeSelected" panelClass="short-panel" (selectionChange)="filtroLugar($event)">
+            <mat-option *ngFor="let maintenanceType of maintenanceTypes" [value]="maintenanceType.id">
+              {{maintenanceType.name}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div class="circle-input">
+        <span class="circle-2 circle-form">2</span>
+        <mat-form-field>
+          <h4 class="circle-text-label">Departamento</h4>
+          <mat-select (selectionChange)="onDepartmentSelected($event)" [(ngModel)]="departmentSelected" panelClass="short-panel" (selectionChange)="filtroDepartamento($event)">
+            <mat-option *ngFor="let department of departments"
+              [value]="{'departmentId':department.id,'caseName':department.caseName}">
+              {{department.name}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div class="circle-input">
+        <span class="circle-2-1 circle-form">3</span>
+        <mat-form-field *ngIf="selectedCaseName == 'CASE 1'">
+          <h4 class="circle-text-label">Área</h4>
+          <mat-select (selectionChange)="onAreaSelected($event)" panelClass="short-panel" [(ngModel)]="areaSelected1" (selectionChange)="filtroArea($event)">
+            <mat-option *ngFor="let area of areas" [value]="{'areaId':area.id,'caseName':area.caseName}">
+              {{area.name}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field *ngIf="selectedCaseName == 'CASE 2'">
+          <h4 class="circle-text-label">Workstation</h4>
+          <mat-select (selectionChange)="onWorkstationSelected($event)" panelClass="short-panel"
+            [(ngModel)]="workstationSelected2" (selectionChange)="filtroWorkstation($event)">
+            <mat-option *ngFor="let workstation of workstations"
+              [value]="{'workstationId':workstation.id,'caseName':workstation.caseName}">
+              {{workstation.name}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div class="circle-input">
+        <span class="circle-form circle-2-2">4</span>
+        <mat-form-field *ngIf="selectedCaseName == 'CASE 1'">
+          <h4 class="circle-text-label">Workstation</h4>
+          <mat-select (selectionChange)="onWorkstationSelected($event)" panelClass="short-panel"
+            [(ngModel)]="workstationSelected1" (ngModelChange)="filtroWorkstation($event)">
+            <mat-option *ngFor="let workstation of workstations"
+              [value]="{'workstationId':workstation.id,'caseName':workstation.caseName}">
+              {{workstation.name}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field *ngIf="selectedCaseName == 'CASE 2'">
+          <h4 class="circle-text-label">Área</h4>
+          <mat-select (selectionChange)="onAreaSelected($event)" panelClass="short-panel" [(ngModel)]="areaSelected2" (ngModelChange)="filtroArea($event)">
+            <mat-option *ngFor="let area of areas" [value]="{'areaId':area.id,'caseName':area.caseName}">
+              {{area.name}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+    </mat-grid-tile>
+  </mat-grid-list>
+  <mat-grid-list cols="1" rowHeight="1:0.07">
+    <mat-grid-tile [rowspan]="2">
+        <div class="circle-input">
+          <mat-form-field>
+            <h4 class="circle-text-label">Persona observada</h4>
+            <input type="text" matInput [(ngModel)]="observedPerson" (ngModelChange)="filtroObservada(observedPerson)">
+          </mat-form-field>
+        </div>
+        <div class="circle-input">
+          <mat-form-field>
+            <h4 class="circle-text-label">Tipo de comportamiento</h4>
+            <input type="text" matInput [(ngModel)]="typeConduct" (ngModelChange)="filtroComportamiento(typeConduct)">
+          </mat-form-field>
+        </div>
+    </mat-grid-tile>
+    <mat-grid-tile>
+      <div class="example-button-row">
+        <button mat-flat-button style="background: #0D47A1">
+          <img src="../../../../assets/imagenes/word.png" alt="word">
+          Generar reporte
+        </button>
+      </div>
+    </mat-grid-tile>
+  </mat-grid-list>
+</mat-card-content>
+<!-- /first row -->
+
+<!-- second row -->
+<mat-card-content class="second-row-data">
+  <mat-tab-group mat-align-tabs="center" dynamicHeight>
+    <mat-tab>
+      <ng-template mat-tab-label>
+        TABLA
+      </ng-template>
+      <ng-template matTabContent>
+        <app-tabla-bbe></app-tabla-bbe>
+      </ng-template>
+    </mat-tab>
+
+    <mat-tab>
+      <ng-template mat-tab-label>
+        GRÁFICAS
+      </ng-template>
+      <ng-template matTabContent>
+        <app-grafica-bbe></app-grafica-bbe>
+      </ng-template>
+    </mat-tab>
+  </mat-tab-group>
+</mat-card-content>
+<!-- /second row -->

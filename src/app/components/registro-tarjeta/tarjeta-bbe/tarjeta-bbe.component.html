@@ -1,0 +1,476 @@
+<!-- second row -->
+<mat-card-content class="second-row-data">
+  <!-- <mat-grid-list cols="4" rowHeight="1:0.35"> -->
+  <!-- rowBreakpoint1 -->
+  <mat-grid-list [cols]="colBreakpoint1" rowHeight="{{rowBreakpoint1}}" (window:resize)="onResize($event)">
+    <mat-grid-tile class="card-date-input">
+      <mat-form-field>
+        <input matInput [matDatepicker]="picker" placeholder="Fecha" [(ngModel)]="dateSelected" disabled>
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker touchUi #picker disabled="false"></mat-datepicker>
+      </mat-form-field>
+
+    </mat-grid-tile>
+
+    <mat-grid-tile>
+      <mat-form-field>
+        <input type="time" matInput placeholder="Hora" [(ngModel)]="timeSelected" placeholder="HH:mm:ss" required="true">
+      </mat-form-field>
+    </mat-grid-tile>
+
+    <mat-grid-tile *ngIf="colBreakpoint1 == 4; else noColspan" colspan="2">
+      <div class="no-circle-input">
+      <h4 class="no-circle-text-label">Seleccione a la persona que reporta:</h4>
+      <mat-form-field>
+        <mat-select (selectionChange)="onReportedPersonSelected($event)" panelClass="short-panel" [(ngModel)]="oberverSelected">
+          <mat-option *ngFor="let employee of employeesWithNumber" [value]="employee.employeeNumber">
+            ({{employee.employeeNumber}}) {{employee.name}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    </mat-grid-tile>
+    <ng-template #noColspan>
+      <mat-grid-tile>
+        <div class="no-circle-input">
+          <h4 class="no-circle-text-label">Seleccione a la persona que reporta:</h4>
+          <mat-form-field>
+            <mat-select (selectionChange)="onReportedPersonSelected($event)" panelClass="short-panel"
+              [(ngModel)]="oberverSelected">
+              <mat-option *ngFor="let employee of employeesWithNumber" [value]="employee.employeeNumber">
+                ({{employee.employeeNumber}}) {{employee.name}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+      </mat-grid-tile>
+    </ng-template>
+  </mat-grid-list>
+</mat-card-content>
+<!-- /second row -->
+
+<!-- third row -->
+<mat-card-content class="third-row-data">
+  <!-- <mat-grid-list cols="1" rowHeight="1:0.45"> -->
+    <!-- rowBreakpoint2 -->
+    <mat-grid-list cols="1" rowHeight="{{rowBreakpoint2}}" (window:resize)="onResize($event)">
+    <mat-grid-tile>
+      <div class="circle-input">
+      <span class="circle-2-1 circle-form">1</span>
+      <mat-form-field *ngIf="selectedCaseName == 'CASE 1'">
+        <h4 class="circle-text-label">Área</h4>
+        <mat-select (selectionChange)="onAreaSelected($event)" panelClass="short-panel" [(ngModel)]="areaSelected">
+          <mat-option *ngFor="let area of recibedAreas" [value]="{'areaId':area.id,'caseName':area.caseName}">
+            {{area.name}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field *ngIf="selectedCaseName == 'CASE 2'">
+        <h4 class="circle-text-label">Workstation</h4>
+        <mat-select (selectionChange)="onWorkstationSelected($event)" panelClass="short-panel" [(ngModel)]="workstationSelected">
+          <mat-option *ngFor="let workstation of recibedWorkstations" [value]="{'workstationId':workstation.id,'caseName':workstation.caseName}">
+              {{workstation.name}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      </div>
+
+      <div class="circle-input">
+      <span class="circle-form circle-2-2">2</span>
+      <mat-form-field *ngIf="selectedCaseName == 'CASE 1'">
+        <h4 class="circle-text-label">Workstation</h4>
+        <mat-select (selectionChange)="onWorkstationSelected($event)" panelClass="short-panel" [(ngModel)]="workstationSelected">
+          <mat-option *ngFor="let workstation of workstations" [value]="{'workstationId':workstation.id,'caseName':workstation.caseName}">
+              {{workstation.name}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field *ngIf="selectedCaseName == 'CASE 2'">
+        <h4 class="circle-text-label">Area</h4>
+        <mat-select (selectionChange)="onAreaSelected($event)" panelClass="short-panel" [(ngModel)]="areaSelected">
+          <mat-option *ngFor="let area of areas" [value]="{'areaId':area.id,'caseName':area.caseName}">
+            {{area.name}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      </div>
+
+      <div class="circle-input">
+      <span class="circle-form circle-2-3">3</span>
+      <mat-form-field>
+        <h4 class="circle-text-label">Máquina</h4>
+        <mat-select (selectionChange)="onMachineSelected($event)" panelClass="short-panel" [(ngModel)]="machineSelected">
+          <mat-option *ngFor="let machine of machines" [value]="{'machineId':machine.id}">
+            {{machine.name}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      </div>
+
+      <div class="circle-input">
+      <span class="circle-form circle-2-4">4</span>
+      <mat-form-field>
+        <h4 class="circle-text-label">Sistema</h4>
+        <mat-select (selectionChange)="onSystemSelected($event)" panelClass="short-panel" [(ngModel)]="systemSelected">
+          <mat-option *ngFor="let system of systems" [value]="{'systemId':system.id}">
+              {{system.name}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      </div>
+
+      <mat-form-field>
+        <mat-label>Descripción del evento ocurrido.</mat-label>
+        <textarea matInput placeholder="Descripción del evento ocurrido." [(ngModel)]="eventDescription"></textarea>
+      </mat-form-field>
+    </mat-grid-tile>
+  </mat-grid-list>
+</mat-card-content>
+<!-- /third row -->
+
+<!-- fourth row -->
+<mat-card-content class="fourth-row-data">
+    <!-- <mat-grid-list cols="1" rowHeight="1:0.1"> -->
+      <!-- rowBreakpoint3 -->
+    <mat-grid-list cols="1" rowHeight="{{rowBreakpoint3}}" (window:resize)="onResize($event)">
+      <mat-grid-tile>
+          <mat-grid-tile-header>Revisa puntualmente los siguientes comportamientos</mat-grid-tile-header>
+      </mat-grid-tile>
+    </mat-grid-list>
+    <!-- <mat-grid-list cols="1" rowHeight="1:0.61"> -->
+      <!-- rowBreakpoint4
+      Se empalma texto en movil -->
+      <mat-grid-list cols="1" rowHeight="{{rowBreakpoint4}}" (window:resize)="onResize($event)">
+      <mat-grid-tile class="table-radio-grid select-card-field">
+          <table class="table-radio mat-elevation-z8">
+              <tr class="table-header">
+                <th> &nbsp; </th>
+                <th> <label>Positivos</label> </th>
+                <th> <label>Negativos</label> </th>
+                <th> <label>N/A</label> </th>
+              </tr>
+              <tr>
+                <td>
+                  <label>Solicitar asesorías para disposición de residuos:</label>
+                </td>
+                <td>
+                  <mat-radio-group [(ngModel)]="opt1">
+                    <mat-radio-button value="1" [checked]="true"></mat-radio-button>
+                  </mat-radio-group>
+                </td>
+                <td>
+                  <mat-radio-group [(ngModel)]="opt1">
+                    <mat-radio-button value="2"></mat-radio-button>
+                  </mat-radio-group>
+                </td>
+                <td>
+                  <mat-radio-group [(ngModel)]="opt1">
+                    <mat-radio-button value="0"></mat-radio-button>
+                  </mat-radio-group>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <label>Área de trabajo sin acumulación de residuos:</label>
+                </td>
+                <td>
+                  <mat-radio-group [(ngModel)]="opt2">
+                    <mat-radio-button value="1" [checked]="true"></mat-radio-button>
+                  </mat-radio-group>
+                </td>
+                <td>
+                    <mat-radio-group [(ngModel)]="opt2">
+                        <mat-radio-button value="2"></mat-radio-button>
+                    </mat-radio-group>
+                </td>
+                <td>
+                    <mat-radio-group [(ngModel)]="opt2">
+                  <mat-radio-button value="0"></mat-radio-button>
+                  </mat-radio-group>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <label>Correcta identificación de contenedores para residuos:</label>
+                </td>
+                <td>
+                    <mat-radio-group [(ngModel)]="opt3">
+                  <mat-radio-button value="1" [checked]="true"></mat-radio-button>
+                  </mat-radio-group>
+                </td>
+                <td>
+                    <mat-radio-group [(ngModel)]="opt3">
+                  <mat-radio-button value="2"></mat-radio-button>
+                  </mat-radio-group>
+                </td>
+                <td>
+                    <mat-radio-group [(ngModel)]="opt3">
+                  <mat-radio-button value="0"></mat-radio-button>
+                  </mat-radio-group>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <label>Segmentación adecuada de residuos en el área de trabajo:</label>
+                </td>
+                <td>
+                    <mat-radio-group [(ngModel)]="opt4">
+                  <mat-radio-button value="1" [checked]="true"></mat-radio-button>
+                  </mat-radio-group>
+                </td>
+                <td>
+                    <mat-radio-group [(ngModel)]="opt4">
+                  <mat-radio-button value="2"></mat-radio-button>
+                  </mat-radio-group>
+                </td>
+                <td>
+                    <mat-radio-group [(ngModel)]="opt4">
+                  <mat-radio-button value="0"></mat-radio-button>
+                  </mat-radio-group>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <label>Correcta identificación y almacenamiento de productos químicos:</label>
+                </td>
+                <td>
+                    <mat-radio-group [(ngModel)]="opt5">
+                  <mat-radio-button value="1" [checked]="true"></mat-radio-button>
+                  </mat-radio-group>
+                </td>
+                <td>
+                    <mat-radio-group [(ngModel)]="opt5">
+                  <mat-radio-button value="2"></mat-radio-button>
+                  </mat-radio-group>
+                </td>
+                <td>
+                    <mat-radio-group [(ngModel)]="opt5">
+                  <mat-radio-button value="0"></mat-radio-button>
+                  </mat-radio-group>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <label>Descarga controlada y/o con previo aviso a drenaje (químicos neutralizados, compuestos cancerigenos, levaura):</label>
+                </td>
+                <td>
+                    <mat-radio-group [(ngModel)]="opt6">
+                  <mat-radio-button value="1" [checked]="true"></mat-radio-button>
+                  </mat-radio-group>
+                </td>
+                <td>
+                    <mat-radio-group [(ngModel)]="opt6">
+                  <mat-radio-button value="2"></mat-radio-button>
+                  </mat-radio-group>
+                </td>
+                <td>
+                    <mat-radio-group [(ngModel)]="opt6">
+                  <mat-radio-button value="0"></mat-radio-button>
+                  </mat-radio-group>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <label>Consumo responsable de energeticos (Agua, Electricidad, Térmico):</label>
+                </td>
+                <td>
+                    <mat-radio-group [(ngModel)]="opt7">
+                  <mat-radio-button value="1" [checked]="true"></mat-radio-button>
+                  </mat-radio-group>
+                </td>
+                <td>
+                    <mat-radio-group [(ngModel)]="opt7">
+                  <mat-radio-button value="2"></mat-radio-button>
+                  </mat-radio-group>
+                </td>
+                <td>
+                    <mat-radio-group [(ngModel)]="opt7">
+                  <mat-radio-button value="0"></mat-radio-button>
+                  </mat-radio-group>
+                </td>
+              </tr>
+            </table>
+      </mat-grid-tile>
+    </mat-grid-list>
+  </mat-card-content>
+  <!-- /fourth row -->
+
+<!-- fifth row -->
+<mat-card-content class="fifth-row-data">
+  <!-- <mat-grid-list cols="2" rowHeight="2:0.40"> -->
+    <!-- rowBreakpoint5 -->
+  <mat-grid-list [cols]="colBreakpoint5" rowHeight="{{rowBreakpoint5}}" (window:resize)="onResize($event)">
+    <mat-grid-tile *ngIf="colBreakpoint5 == 4; else noColspan5" colspan="2" class="just-title">
+      <mat-grid-tile-header>Seleccione los datos de la persona observada</mat-grid-tile-header>
+    </mat-grid-tile>
+
+    <ng-template #noColspan5>
+      <mat-grid-tile class="just-title">
+        <mat-grid-tile-header>Seleccione los datos de la persona observada</mat-grid-tile-header>
+      </mat-grid-tile>
+    </ng-template>
+
+    <mat-grid-tile class="observed-person">
+      <label class="observed-person-label">Seleccione el tipo de persona observada:</label>
+      <mat-radio-group id="observed-person-type" [(ngModel)]="observedTypeSelected" (change)="onObservedtypeChange($event)">
+          <mat-radio-button value="Socio" [checked]="true">Socio</mat-radio-button>
+          &nbsp;
+          <mat-radio-button value="Contratista">Contratista</mat-radio-button>
+      </mat-radio-group>
+    </mat-grid-tile>
+
+    <mat-grid-tile class="observed-person-data">
+      <div class="no-circle-input" *ngIf="observedTypeSelected == 'Socio'">
+        <h4 class="no-circle-text-label">Seleccione al socio observado:</h4>
+        <mat-form-field>
+          <mat-select (selectionChange)="onReportedPersonSelected($event)" [(ngModel)]="employeeSelected">
+            <mat-option *ngFor="let employee of employeesWithNumber" [value]="employee.employeeNumber">
+              ({{employee.employeeNumber}}) {{employee.name}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div class="no-circle-input" *ngIf="observedTypeSelected == 'Contratista'">
+        <h4 class="circle-text-label">Escriba el nombre del contratista:</h4>
+        <mat-form-field>
+          <input matInput [(ngModel)]="contractorNameSelected">
+        </mat-form-field>
+      </div>
+    </mat-grid-tile>
+
+    <mat-grid-tile class="position-person">
+      <div class="no-circle-input" *ngIf="observedTypeSelected == 'Socio'">
+          <h4 class="no-circle-text-label">Descripción de posición:</h4>
+          <mat-form-field>
+            <mat-select [(ngModel)]="observedEmployeeRoleIdSelected">
+              <mat-option *ngFor="let position of positions" [value]="position.id">
+                {{position.displayName}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+      </div>
+      <div class="no-circle-input" *ngIf="observedTypeSelected == 'Contratista'">
+        <h4 class="no-circle-text-label">Escriba el nombre de la posición del contratista:</h4>
+        <mat-form-field>
+          <input matInput [(ngModel)]="observedContractorRoleSelected">
+        </mat-form-field>
+      </div>
+      </mat-grid-tile>
+
+    <mat-grid-tile class="unity-person-data">
+      <div class="no-circle-input" *ngIf="observedTypeSelected == 'Socio'">
+        <h4 class="no-circle-text-label">Área breve unidad organizativa:</h4>
+        <mat-form-field>
+          <mat-select [(ngModel)]="observedAreaIdSelected">
+            <mat-option *ngFor="let singleArea of allAreas" [value]="singleArea.id">
+              {{singleArea.name}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div class="no-circle-input" *ngIf="observedTypeSelected == 'Contratista'">
+        <h4 class="no-circle-text-label">Área breve unidad organizativa:</h4>
+        <mat-form-field>
+          <input matInput [(ngModel)]="eventPlaceDescriptionSelected">
+        </mat-form-field>
+      </div>
+    </mat-grid-tile>
+
+  </mat-grid-list>
+</mat-card-content>
+<!-- /fifth row -->
+
+<!-- last row -->
+<mat-card-content class="corrective-feedback-row-data" *ngIf="opt1 == '2' || opt2 == '2' || opt3 == '2' || opt4 == '2' || opt5 == '2' || opt6 == '2' || opt7 == '2'">
+  <!-- <mat-grid-list cols="1" rowHeight="1:0.1"> -->
+  <!-- rowBreakpoint5 -->
+  <mat-grid-list cols="1" rowHeight="{{rowBreakpoint6}}" (window:resize)="onResize($event)">
+    <mat-grid-tile class="corrective-feedback-header">
+      <mat-grid-tile-header>Retroalimentación Correctiva</mat-grid-tile-header>
+    </mat-grid-tile>
+    <mat-grid-tile class="corrective-feedback" [rowspan]="3">
+      <mat-form-field>
+        <mat-label>¿Cómo previenes este riesgo(s)?</mat-label>
+        <textarea matInput placeholder="Anota aquí lo más destacado de la observación" [(ngModel)]="riskPreventionDescriptionSelected"></textarea>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>¿Qué compromiso específico genera?</mat-label>
+        <textarea matInput placeholder="Anota aquí lo más destacado de la observación" [(ngModel)]="riskCompromiseDescriptionSelected"></textarea>
+      </mat-form-field>
+
+      <label class=table-causes-label>¿Causas de comportamiento negativo</label>
+      <table class="table-check-causes mat-elevation-z8">
+        <tr>
+          <td>
+              <mat-checkbox [(ngModel)]="reasonDistraction">Descuido</mat-checkbox>
+          </td>
+          <td>
+              <mat-checkbox [(ngModel)]="reasonDisinterest">Desinterés</mat-checkbox>
+          </td>
+          <td>
+              <mat-checkbox [(ngModel)]="reasonUnclearRuling">Reglas poco claras</mat-checkbox>
+          </td>
+        </tr>
+        <tr>
+          <td>
+              <mat-checkbox [(ngModel)]="reasonMissMaterial">Falta de material</mat-checkbox>
+          </td>
+          <td>
+              <mat-checkbox [(ngModel)]="reasonMissTraining">Falta de capacitación</mat-checkbox>
+          </td>
+          <td>
+              <mat-checkbox [(ngModel)]="reasonOther">Otro</mat-checkbox>
+          </td>
+        </tr>
+        <tr>
+          <td>
+              <mat-checkbox [(ngModel)]="reasonMisKnowledge">Falta de conocimiento</mat-checkbox>
+          </td>
+          <td>
+              <mat-checkbox [(ngModel)]="reasonDoneQuick">Queria terminar rápido</mat-checkbox>
+          </td>
+          <td>
+              <mat-form-field *ngIf="reasonOther">
+                  <mat-label>Escriba la razón:</mat-label>
+                  <input matInput [(ngModel)]="reasonOtherDescription">
+              </mat-form-field>
+          </td>
+        </tr>
+      </table>
+    </mat-grid-tile>
+  </mat-grid-list>
+</mat-card-content>
+
+<mat-card-content class="positive-feedback-row-data">
+  <!-- <mat-grid-list cols="1" rowHeight="1:0.1"> -->
+  <!-- rowBreakpoint7 -->
+  <mat-grid-list cols="1" rowHeight="{{rowBreakpoint7}}" (window:resize)="onResize($event)">
+      <div class="positive-feedback-header">
+        <mat-grid-tile-header>Retroalimentación positiva</mat-grid-tile-header>
+      </div>
+      <div class="positive-feedback">
+      <mat-form-field style="font-size: 2rm">
+        <mat-label>Retroalimentación positiva: "Comenta al personal observado los comportamientos seguros, felicítalo y anota aquí lo más destacado de la observación".</mat-label>
+        <textarea matInput placeholder="Anota aquí lo más destacado de la observación" [(ngModel)]="postiveFeedbackSelected"></textarea>
+      </mat-form-field>
+    </div>
+  </mat-grid-list>
+</mat-card-content>
+
+<mat-card-content>
+  <!-- <mat-grid-list cols="1" rowHeight="1:0.15"> -->
+  <!-- rowBreakpoint8 -->
+  <mat-grid-list cols="1" rowHeight="{{rowBreakpoint8}}" (window:resize)="onResize($event)">
+    <mat-grid-tile class="buttons">
+      <div class="registry-card-buttons">
+        <button mat-flat-button color="primary">CANCELAR</button>
+        &nbsp;
+        <button *ngIf="observedTypeSelected == 'Socio'" [disabled]="(dateSelected != '' && timeSelected != '' && oberverSelected != '' && areaSelected != '' && workstationSelected != '' && machineSelected != '' && systemSelected != '' && eventDescription != '' && employeeSelected != '' && observedEmployeeRoleIdSelected != '' && observedAreaIdSelected != '' && postiveFeedbackSelected != '') ? false : true" mat-flat-button color="accent" (click)="onClickSaveBBE()">GUARDAR TARJETA</button>
+
+
+        <button *ngIf="observedTypeSelected == 'Contratista'" [disabled]="(dateSelected != '' && timeSelected != '' && oberverSelected != '' && areaSelected != '' && workstationSelected != '' && machineSelected != '' && systemSelected != '' && eventDescription != '' && contractorNameSelected != '' && observedContractorRoleSelected != '' && eventPlaceDescriptionSelected != '' && postiveFeedbackSelected != '') ? false : true" mat-flat-button color="accent" (click)="onClickSaveBBE()">GUARDAR TARJETA</button>
+      </div>
+    </mat-grid-tile>
+  </mat-grid-list>
+</mat-card-content>
+<!-- /last row -->

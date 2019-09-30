@@ -1,0 +1,81 @@
+<!-- third row -->
+<mat-card-content class="first-row-data">
+  <mat-grid-list cols="1" rowHeight="1:0.15">
+    <mat-grid-tile>
+      <div class="no-circle-input">
+        <mat-form-field>
+          <h4 class="no-circle-text-label">Año</h4>
+          <input matInput [matDatepicker]="picker" [(ngModel)]="yearSelected" >
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker startView="multi-year" (yearSelected)="picker.close();onYearSelected($event);"
+            touchUi>
+          </mat-datepicker>
+        </mat-form-field>
+      </div>
+      <div class="circle-input">
+        <span class="circle-2 circle-form">1</span>
+        <mat-form-field>
+          <h4 class="circle-text-label">Departamento</h4>
+          <mat-select (selectionChange)="onDepartmentSelected($event)" [(ngModel)]="departmentSelected"
+            panelClass="short-panel">
+            <mat-option *ngFor="let department of departments"
+              [value]="{'departmentId':department.id,'caseName':department.caseName}">
+              {{department.name}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+    </mat-grid-tile>
+  </mat-grid-list>
+  <mat-grid-list cols="1" rowHeight="1:0.15">
+    <mat-grid-tile>
+      <div class="circle-input">
+        <mat-form-field>
+          <h4 class="circle-text-label">¿A quién le sucedio?</h4>
+          <input type="text" matInput [(ngModel)]="observedPerson">
+        </mat-form-field>
+      </div>
+      <div class="circle-input">
+        <mat-form-field>
+          <h4 class="circle-text-label">Tipo de comportamiento</h4>
+          <input type="text" matInput [(ngModel)]="typeConduct">
+        </mat-form-field>
+      </div>
+    </mat-grid-tile>
+  </mat-grid-list>
+  <mat-grid-list cols="1" rowHeight="1:0.07">
+    <mat-grid-tile>
+      <div class="example-button-row">
+        <button mat-flat-button style="background: #0D47A1">
+            <img src="../../../../assets/imagenes/word.png" alt="word">
+          Generar reporte
+        </button>
+      </div>
+    </mat-grid-tile>
+  </mat-grid-list>
+</mat-card-content>
+<!-- /third row -->
+
+<!-- second row -->
+<mat-card-content class="second-row-data">
+  <mat-tab-group mat-align-tabs="center" dynamicHeight>
+    <mat-tab>
+      <ng-template mat-tab-label>
+        TABLA
+      </ng-template>
+      <ng-template matTabContent>
+        <app-tabla-nm></app-tabla-nm>
+      </ng-template>
+    </mat-tab>
+
+    <mat-tab>
+      <ng-template mat-tab-label>
+        GRÁFICAS
+      </ng-template>
+      <ng-template matTabContent>
+        <app-grafica-nm></app-grafica-nm>
+      </ng-template>
+    </mat-tab>
+  </mat-tab-group>
+</mat-card-content>
+<!-- /second row -->
